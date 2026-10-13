@@ -119,7 +119,7 @@
     const files = [];
     let done = 0;
     await Promise.all(BUILD.tracks.map(async (t) => {
-      const res = await fetch(t.file);
+      const res = await fetch(`${t.file}?build=${BUILD.build}`);   // audio tied to this build
       if (!res.ok) throw new Error("Couldn't download voice track " + t.n);
       files.push([`${BUILD.romName}-${t.n}.pcm`, wavToPcm(await res.arrayBuffer(), t.loop)]);
       progress(++done, BUILD.tracks.length);
@@ -246,7 +246,7 @@
 
   async function init() {
     try {
-      BUILD = await (await fetch("build.json")).json();
+      BUILD = await (await fetch("build.json", { cache: "no-store" })).json();   // never a stale build
     } catch (e) {
       setStatus("error", "Couldn't load build.json. Rebuild the player with tools/web-player/build.py.");
       return;

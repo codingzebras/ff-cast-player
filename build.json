@@ -1,5 +1,5 @@
 {
- "build": "3810d09",
+ "build": "4acb1ed-0cc67b02",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "c49baa0d00e3f0df2a13e54772b49890e3f7c582",
@@ -36,7 +36,8 @@
    "speaker": "Narrator",
    "line": "\u201cLong ago, the War of the Magi reduced the world to a scorched waste\u2026\u201d",
    "msg": "msg 6",
-   "addr": "$CD0174"
+   "addr": "$CD0174",
+   "sha1": "006aa32026da"
   },
   {
    "n": 2,
@@ -46,7 +47,8 @@
    "speaker": "Narrator",
    "line": "\u201c1000 years have passed\u2026 Iron, gunpowder, and steam engines have bee\u2026\u201d",
    "msg": "msg 7",
-   "addr": "$CD01C4"
+   "addr": "$CD01C4",
+   "sha1": "20cd5ce176fe"
   },
   {
    "n": 3,
@@ -56,7 +58,8 @@
    "speaker": "Narrator",
    "line": "\u201cBut there are some who would enslave the world by reviving the drea\u2026\u201d",
    "msg": "msg 8",
-   "addr": "$CD021C"
+   "addr": "$CD021C",
+   "sha1": "e4111028ee20"
   },
   {
    "n": 4,
@@ -66,7 +69,8 @@
    "speaker": "Narrator",
    "line": "\u201cCan it be that those in power are on the verge of repeating a sense\u2026\u201d",
    "msg": "msg 9",
-   "addr": "$CD0273"
+   "addr": "$CD0273",
+   "sha1": "6e190dd54583"
   },
   {
    "n": 5,
@@ -76,7 +80,8 @@
    "speaker": "Vicks",
    "line": "\u201cThere's the town\u2026\u201d",
    "msg": "msg 1",
-   "addr": "$CD0000"
+   "addr": "$CD0000",
+   "sha1": "20021b593384"
   },
   {
    "n": 6,
@@ -86,7 +91,8 @@
    "speaker": "Wedge",
    "line": "\u201cHard to believe an Esper's been found intact there, 1000 years afte\u2026\u201d",
    "msg": "msg 1",
-   "addr": "$CD0015"
+   "addr": "$CD0015",
+   "sha1": "d9a13e51790a"
   },
   {
    "n": 7,
@@ -96,7 +102,8 @@
    "speaker": "Vicks + Wedge",
    "line": "\u201cThink it's still alive? / Probably\u2026 \u2026judging from the urgency of ou\u2026\u201d",
    "msg": "msg 2",
-   "addr": "$CD0059"
+   "addr": "$CD0059",
+   "sha1": "0ce7c53edc45"
   },
   {
    "n": 8,
@@ -106,7 +113,8 @@
    "speaker": "Vicks",
    "line": "\u201cAnd this woman, this\u2026sorcerer. Why's she here?\u201d",
    "msg": "msg 3",
-   "addr": "$CD00A0"
+   "addr": "$CD00A0",
+   "sha1": "d6dd36ed4f7f"
   },
   {
    "n": 9,
@@ -116,7 +124,8 @@
    "speaker": "Vicks",
    "line": "\u201cI heard she fried 50 of our Magitek Armored soldiers in under 3 min\u2026\u201d",
    "msg": "msg 3",
-   "addr": "$CD00C9"
+   "addr": "$CD00C9",
+   "sha1": "0b3a8c59655b"
   },
   {
    "n": 10,
@@ -126,7 +135,8 @@
    "speaker": "Wedge",
    "line": "\u201cNot to worry. The Slave Crown on her head robs her of all conscious\u2026\u201d",
    "msg": "msg 4",
-   "addr": "$CD00FF"
+   "addr": "$CD00FF",
+   "sha1": "0fe76640a941"
   },
   {
    "n": 11,
@@ -136,7 +146,8 @@
    "speaker": "Wedge",
    "line": "\u201cWe'll approach from the east. Move out!\u201d",
    "msg": "msg 5",
-   "addr": "$CD014E"
+   "addr": "$CD014E",
+   "sha1": "6a078eac1671"
   }
  ],
  "romName": "ffvi"
