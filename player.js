@@ -99,7 +99,7 @@
       renderJumps();
       if (r.clean && $("remember").checked && !fromMemory) remember(r.clean);
       setStatus("ok", fromMemory ? "Using the ROM saved on this device. Patched and ready."
-        : r.how === "patched" ? "Clean ROM verified and patched. Ready to play."
+        : r.how === "patched" ? "Clean ROM verified: byte for byte the known-good US 1.0 dump. Patched and ready to play."
         : "Patched ROM from this build recognized. Ready to play.");
       $("play").disabled = false;
       $("forget").hidden = !fromMemory;
