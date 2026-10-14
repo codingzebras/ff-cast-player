@@ -17,6 +17,8 @@
   let BUILD = null;          // build.json
   let romBytes = null;       // patched ROM ready to run
   let started = false;
+  let stateKey = null;       // AES key for the jump states, derived from the clean ROM
+  let pendingJump = null;    // a jump chosen before the game was running
 
   // ---------- small helpers ----------
   const hex = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -79,10 +81,22 @@
     return { rom: out, clean: bytes, how: "patched" };
   }
 
+  // Jump states hold the game's memory, so the build encrypts them with a key
+  // only a clean ROM gives: SHA-256("ffvi-voice-states\0" + ROM).
+  async function deriveStateKey(clean) {
+    const tag = new TextEncoder().encode("ffvi-voice-states\0");
+    const buf = new Uint8Array(tag.length + clean.length);
+    buf.set(tag); buf.set(clean, tag.length);
+    const raw = await crypto.subtle.digest("SHA-256", buf);
+    return crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+  }
+
   async function acceptRom(bytes, fromMemory) {
     try {
       const r = await prepareRom(bytes);
       romBytes = r.rom;
+      stateKey = r.clean ? await deriveStateKey(r.clean) : null;
+      renderJumps();
       if (r.clean && $("remember").checked && !fromMemory) remember(r.clean);
       setStatus("ok", fromMemory ? "Using the ROM saved on this device. Patched and ready."
         : r.how === "patched" ? "Clean ROM verified and patched. Ready to play."
@@ -217,7 +231,10 @@
         disableDatabases: true,
         buttonOpts: { netplay: false },
       });
-      window.EJS_emulator.on("start", () => setStatus("ok", "Running. Choose New Game to hear the opening narration."));
+      window.EJS_emulator.on("start", () => {
+        setStatus("ok", "Running. Choose New Game, or jump to a scene.");
+        if (pendingJump) { const j = pendingJump; pendingJump = null; setTimeout(() => jumpTo(j), 800); }
+      });
     } catch (e) {
       console.warn(e);
       started = false;
@@ -225,6 +242,43 @@
       $("rom-file").disabled = false;
       setStatus("error", e.message);
     }
+  }
+
+  // ---------- jump to a scene (save states) ----------
+  function setJumpMsg(kind, text) { const el = $("jump-msg"); el.hidden = !text; el.dataset.kind = kind; el.textContent = text; }
+  function renderJumps() {
+    const ol = $("jumps"), list = BUILD.jumps || [];
+    $("jump-sec").hidden = !list.length;
+    ol.innerHTML = "";
+    for (const j of list) {
+      const li = document.createElement("li");
+      const b = document.createElement("button");
+      b.className = "jump"; b.type = "button"; b.textContent = j.label; b.disabled = !stateKey;
+      b.addEventListener("click", () => jumpTo(j));
+      li.appendChild(b); ol.appendChild(li);
+    }
+    if (list.length && !stateKey && romBytes) setJumpMsg("error", "Scene jumps need your clean ROM (an already-patched ROM can't unlock them).");
+    const hj = hashJump();
+    if (hj && stateKey && !started) setJumpMsg("busy", "This link jumps to " + hj.label + " Press Play.");
+  }
+  async function jumpTo(j) {
+    if (!stateKey) { setJumpMsg("error", "Pick your clean ROM first."); return; }
+    if (!started) { pendingJump = j; setJumpMsg("busy", "Starting the game…"); play(); return; }
+    try {
+      setJumpMsg("busy", "Loading " + j.label + "…");
+      const blob = new Uint8Array(await (await fetch(j.file + "?build=" + encodeURIComponent(BUILD.build), { cache: "no-store" })).arrayBuffer());
+      const state = new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: blob.slice(0, 12) }, stateKey, blob.slice(12)));
+      await window.EJS_emulator.gameManager.loadState(state);
+      setJumpMsg("ok", "Now at " + j.label + " Click the game once so it gets your keys.");
+    } catch (e) {
+      console.warn(e);
+      setJumpMsg("error", "Couldn't load that jump (" + (e.name === "OperationError" ? "this ROM can't unlock it" : e.message) + ").");
+    }
+  }
+  // …/ff-cast-player/#jump=m0011p1 (links from the studio) picks that jump.
+  function hashJump() {
+    const m = /jump=([\w-]+)/.exec(location.hash);
+    return m && (BUILD.jumps || []).find((j) => j.id === m[1]);
   }
 
   // ---------- page wiring ----------
@@ -252,13 +306,14 @@
       return;
     }
     renderTracks();
+    renderJumps();
     $("rom-file").addEventListener("change", async (ev) => {
       const f = ev.target.files && ev.target.files[0];
       if (!f) return;
       setStatus("busy", "Checking " + f.name + "…");
       await acceptRom(new Uint8Array(await f.arrayBuffer()), false);
     });
-    $("play").addEventListener("click", play);
+    $("play").addEventListener("click", () => { const j = hashJump(); if (j && stateKey) pendingJump = j; play(); });
     $("forget").addEventListener("click", async () => {
       await forget();
       romBytes = null;

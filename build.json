@@ -1,5 +1,5 @@
 {
- "build": "21f4ab7-5f88e21a",
+ "build": "0456b74-5f88e21a",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "41cb487462ffc64069d5fdc66e3626edbd747a7b",
@@ -150,5 +150,17 @@
    "sha1": "6a078eac1671"
   }
  ],
- "romName": "ffvi"
+ "romName": "ffvi",
+ "jumps": [
+  {
+   "id": "m0006p1",
+   "label": "Scene 1, box 1: Long ago, the War of the Magi reduced the world to a\u2026",
+   "file": "states/m0006p1.bin"
+  },
+  {
+   "id": "m0011p1",
+   "label": "Scene 1, box 12: Let's put her on point. No sense taking any risks. Forward!",
+   "file": "states/m0011p1.bin"
+  }
+ ]
 }
