@@ -1722,6 +1722,10 @@
     padding: 8px 10px; border-radius: 6px; border: 2px solid var(--frame); background: rgba(0, 0, 0, 0.2);
   }
   button.jump:hover:not(:disabled) { border-color: var(--gold); }
+  button.jump.current { border-color: var(--gold); background: rgba(255, 210, 90, 0.18); }
+  button.jump.current::after { content: "  \25C0 now"; color: var(--gold); font: 600 12px var(--font-mono); }
+  #tracks li.unvoiced .tn { color: var(--dim); }
+  #tracks li.shared .line::after { content: " (also in an earlier scene)"; font-style: italic; }
   button.jump:disabled { color: var(--dim); border-color: var(--dim); cursor: not-allowed; }
   .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
   button.go {
@@ -1797,8 +1801,8 @@
 
       <section class="win" aria-labelledby="h-lines">
         <details>
-          <summary><h2 id="h-lines">Voiced lines <span class="count" id="tracks-count"></span></h2></summary>
-          <p class="muted" style="margin:0 0 8px">Choose <b>New Game</b>. One voice clip per dialogue box, starting the moment its box appears.</p>
+          <summary><h2 id="h-lines">Lines in this scene <span class="count" id="tracks-count"></span></h2></summary>
+          <p class="muted" style="margin:0 0 8px" id="lines-sub">Choose <b>New Game</b>. One voice clip per dialogue box, starting the moment its box appears.</p>
           <ol id="tracks" class="scroll"></ol>
         </details>
       </section>
@@ -1823,4 +1827,4 @@
   </footer>
 </div>
 
-<script src="player.js?v=1792013060"></script>
+<script src="player.js?v=1792014692"></script>

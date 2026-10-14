@@ -18,6 +18,8 @@
   let romBytes = null;       // patched ROM ready to run
   let started = false;
   let stateKey = null;       // AES key for the jump states, derived from the clean ROM
+  let LINES = null;          // per-scene lines (decrypted lines.bin), for "Lines in this scene"
+  let currentJump = null;    // the jump you're on (highlighted in the list)
   let pendingJump = null;    // a jump chosen before the game was running
 
   // ---------- small helpers ----------
@@ -97,6 +99,7 @@
       romBytes = r.rom;
       stateKey = r.clean ? await deriveStateKey(r.clean) : null;
       renderJumps();
+      loadLines();
       if (r.clean && $("remember").checked && !fromMemory) remember(r.clean);
       setStatus("ok", fromMemory ? "Using the ROM saved on this device. Patched and ready."
         : r.how === "patched" ? "Clean ROM verified: byte for byte the known-good US 1.0 dump. Patched and ready to play."
@@ -255,10 +258,14 @@
     for (const j of list) {
       const li = document.createElement("li");
       const b = document.createElement("button");
-      b.className = "jump"; b.type = "button"; b.textContent = j.label; b.disabled = !stateKey;
+      b.className = "jump" + (currentJump && currentJump.id === j.id ? " current" : "");
+      b.type = "button"; b.textContent = j.label; b.disabled = !stateKey;
+      if (currentJump && currentJump.id === j.id) b.setAttribute("aria-current", "true");
       b.addEventListener("click", () => jumpTo(j));
       li.appendChild(b); ol.appendChild(li);
     }
+    const cur = ol.querySelector("button.current");
+    if (cur) ol.scrollTop += cur.getBoundingClientRect().top - ol.getBoundingClientRect().top - 40;   // keep "now" in view
     if (list.length && !stateKey && romBytes) setJumpMsg("error", "Scene jumps need your clean ROM (an already-patched ROM can't unlock them).");
     const hj = hashJump();
     if (hj && stateKey && !started) setJumpMsg("busy", "This link jumps to " + hj.label + " Press Play.");
@@ -272,6 +279,7 @@
       const state = new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: blob.slice(0, 12) }, stateKey, blob.slice(12)));
       await window.EJS_emulator.gameManager.loadState(state);
       setJumpMsg("ok", "Now at " + j.label);
+      currentJump = j; renderJumps(); renderLines();
       focusGame();
     } catch (e) {
       console.warn(e);
@@ -310,6 +318,34 @@
   }, { capture: true });
 
   // ---------- page wiring ----------
+  // the lines of the scene you're on (scene 1 until you jump), with voice tracks
+  async function loadLines() {
+    LINES = null;
+    if (!stateKey) return renderLines();
+    try {
+      const blob = new Uint8Array(await (await fetch("lines.bin?build=" + encodeURIComponent(BUILD.build), { cache: "no-store" })).arrayBuffer());
+      LINES = JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: blob.slice(0, 12) }, stateKey, blob.slice(12))));
+    } catch (e) { console.warn("lines", e); }
+    renderLines();
+  }
+  function renderLines() {
+    const sc = LINES && LINES[currentJump ? currentJump.scene : 1];
+    if (!sc) return renderTracks();
+    const ol = $("tracks");
+    ol.innerHTML = "";
+    const voiced = sc.lines.filter((l) => l.track).length;
+    $("tracks-count").textContent = `(${voiced} of ${sc.lines.length} voiced)`;
+    $("lines-sub").textContent = sc.title + (voiced ? "" : " · not voiced yet");
+    for (const l of sc.lines) {
+      const li = document.createElement("li");
+      li.className = (l.track ? "" : "unvoiced") + (l.shared ? " shared" : "");
+      li.innerHTML = `<span class="tn"></span><span class="who"></span><span class="line"></span>`;
+      li.querySelector(".tn").textContent = l.track || "–";
+      li.querySelector(".who").textContent = l.who;
+      li.querySelector(".line").textContent = l.text.replace(/^[A-Z][A-Z .']*:\s*/, "");
+      ol.appendChild(li);
+    }
+  }
   function renderTracks() {
     const ol = $("tracks");
     $("tracks-count").textContent = `(${BUILD.tracks.length})`;

@@ -1,5 +1,5 @@
 {
- "build": "439e590-831e5989",
+ "build": "ed63448-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -166,108 +166,126 @@
   {
    "id": "m0006p1",
    "label": "Scene 1, box 1: Long ago, the War of the Magi reduced the world to a\u2026",
-   "file": "states/m0006p1.bin"
+   "file": "states/m0006p1.bin",
+   "scene": 1
   },
   {
    "id": "m0011p1",
    "label": "Scene 1, box 12: Let's put her on point. No sense taking any risks. Forward!",
-   "file": "states/m0011p1.bin"
+   "file": "states/m0011p1.bin",
+   "scene": 1
   },
   {
    "id": "s0002",
    "label": "Scene 2 (not voiced yet): Upon attempting to leave Narshe",
    "file": "states/s0002.bin",
-   "preview": true
+   "preview": true,
+   "scene": 2
   },
   {
    "id": "s0003",
    "label": "Scene 3 (not voiced yet): Upon encountering the group of guards left of the inn",
    "file": "states/s0003.bin",
-   "preview": true
+   "preview": true,
+   "scene": 3
   },
   {
    "id": "s0004",
    "label": "Scene 4 (not voiced yet): Upon encountering the group of guards right of the inn",
    "file": "states/s0004.bin",
-   "preview": true
+   "preview": true,
+   "scene": 4
   },
   {
    "id": "s0005",
    "label": "Scene 5 (not voiced yet): Upon encountering the group of guards by the item shop",
    "file": "states/s0005.bin",
-   "preview": true
+   "preview": true,
+   "scene": 5
   },
   {
    "id": "s0006",
    "label": "Scene 6 (not voiced yet): Upon encountering the group of guards on the steps leaving the town north",
    "file": "states/s0006.bin",
-   "preview": true
+   "preview": true,
+   "scene": 6
   },
   {
    "id": "s0007",
    "label": "Scene 7 (not voiced yet): Upon encountering the group of guards on the steps in front of the mines north",
    "file": "states/s0007.bin",
-   "preview": true
+   "preview": true,
+   "scene": 7
   },
   {
    "id": "s0008",
    "label": "Scene 8 (not voiced yet): Upon entering the mines north",
    "file": "states/s0008.bin",
-   "preview": true
+   "preview": true,
+   "scene": 8
   },
   {
    "id": "s0009",
    "label": "Scene 9 (not voiced yet): Upon reaching the gate in the mines",
    "file": "states/s0009.bin",
-   "preview": true
+   "preview": true,
+   "scene": 9
   },
   {
    "id": "s0010",
    "label": "Scene 10 (not voiced yet): Upon proceeding through the opened gate",
    "file": "states/s0010.bin",
-   "preview": true
+   "preview": true,
+   "scene": 10
   },
   {
    "id": "s0011",
    "label": "Scene 11 (not voiced yet): Upon reaching Valigarmanda",
    "file": "states/s0011.bin",
-   "preview": true
+   "preview": true,
+   "scene": 11
   },
   {
    "id": "s0012",
    "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle",
    "file": "states/s0012.bin",
-   "preview": true
+   "preview": true,
+   "scene": 12
   },
   {
    "id": "s0013",
    "label": "Scene 13 (not voiced yet): Upon selecting the name \"TERRA\" (during scene 12)",
    "file": "states/s0013.bin",
-   "preview": true
+   "preview": true,
+   "scene": 13
   },
   {
    "id": "s0014",
    "label": "Scene 14 (not voiced yet): Upon walking across the bridge",
    "file": "states/s0014.bin",
-   "preview": true
+   "preview": true,
+   "scene": 14
   },
   {
    "id": "s0015",
    "label": "Scene 15 (not voiced yet): During the flashback",
    "file": "states/s0015.bin",
-   "preview": true
+   "preview": true,
+   "scene": 15
   },
   {
    "id": "s0016",
    "label": "Scene 16 (not voiced yet): Upon defeating the commander",
    "file": "states/s0016.bin",
-   "preview": true
+   "preview": true,
+   "scene": 16
   },
   {
    "id": "s0017",
    "label": "Scene 17 (not voiced yet): Upon attempting to re-enter the town",
    "file": "states/s0017.bin",
-   "preview": true
+   "preview": true,
+   "scene": 17
   }
  ]
 }
