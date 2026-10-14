@@ -1,5 +1,5 @@
 {
- "build": "97b41e1-831e5989",
+ "build": "8b1bb6a-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -234,6 +234,12 @@
    "preview": true
   },
   {
+   "id": "s0012",
+   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle",
+   "file": "states/s0012.bin",
+   "preview": true
+  },
+  {
    "id": "s0014",
    "label": "Scene 14 (not voiced yet): Upon walking across the bridge",
    "file": "states/s0014.bin",
@@ -243,6 +249,18 @@
    "id": "s0015",
    "label": "Scene 15 (not voiced yet): During the flashback",
    "file": "states/s0015.bin",
+   "preview": true
+  },
+  {
+   "id": "s0016",
+   "label": "Scene 16 (not voiced yet): Upon defeating the commander",
+   "file": "states/s0016.bin",
+   "preview": true
+  },
+  {
+   "id": "s0017",
+   "label": "Scene 17 (not voiced yet): Upon attempting to re-enter the town",
+   "file": "states/s0017.bin",
    "preview": true
   }
  ]
