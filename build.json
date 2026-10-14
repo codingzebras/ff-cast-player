@@ -1,5 +1,5 @@
 {
- "build": "f084726-831e5989",
+ "build": "97b41e1-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -172,6 +172,78 @@
    "id": "m0011p1",
    "label": "Scene 1, box 12: Let's put her on point. No sense taking any risks. Forward!",
    "file": "states/m0011p1.bin"
+  },
+  {
+   "id": "s0002",
+   "label": "Scene 2 (not voiced yet): Upon attempting to leave Narshe",
+   "file": "states/s0002.bin",
+   "preview": true
+  },
+  {
+   "id": "s0003",
+   "label": "Scene 3 (not voiced yet): Upon encountering the group of guards left of the inn",
+   "file": "states/s0003.bin",
+   "preview": true
+  },
+  {
+   "id": "s0004",
+   "label": "Scene 4 (not voiced yet): Upon encountering the group of guards right of the inn",
+   "file": "states/s0004.bin",
+   "preview": true
+  },
+  {
+   "id": "s0005",
+   "label": "Scene 5 (not voiced yet): Upon encountering the group of guards by the item shop",
+   "file": "states/s0005.bin",
+   "preview": true
+  },
+  {
+   "id": "s0006",
+   "label": "Scene 6 (not voiced yet): Upon encountering the group of guards on the steps leaving the town north",
+   "file": "states/s0006.bin",
+   "preview": true
+  },
+  {
+   "id": "s0007",
+   "label": "Scene 7 (not voiced yet): Upon encountering the group of guards on the steps in front of the mines north",
+   "file": "states/s0007.bin",
+   "preview": true
+  },
+  {
+   "id": "s0008",
+   "label": "Scene 8 (not voiced yet): Upon entering the mines north",
+   "file": "states/s0008.bin",
+   "preview": true
+  },
+  {
+   "id": "s0009",
+   "label": "Scene 9 (not voiced yet): Upon reaching the gate in the mines",
+   "file": "states/s0009.bin",
+   "preview": true
+  },
+  {
+   "id": "s0010",
+   "label": "Scene 10 (not voiced yet): Upon proceeding through the opened gate",
+   "file": "states/s0010.bin",
+   "preview": true
+  },
+  {
+   "id": "s0011",
+   "label": "Scene 11 (not voiced yet): Upon reaching Valigarmanda",
+   "file": "states/s0011.bin",
+   "preview": true
+  },
+  {
+   "id": "s0014",
+   "label": "Scene 14 (not voiced yet): Upon walking across the bridge",
+   "file": "states/s0014.bin",
+   "preview": true
+  },
+  {
+   "id": "s0015",
+   "label": "Scene 15 (not voiced yet): During the flashback",
+   "file": "states/s0015.bin",
+   "preview": true
   }
  ]
 }
