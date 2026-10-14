@@ -233,6 +233,7 @@
       });
       window.EJS_emulator.on("start", () => {
         setStatus("ok", "Running. Choose New Game, or jump to a scene.");
+        focusGame();
         if (pendingJump) { const j = pendingJump; pendingJump = null; setTimeout(() => jumpTo(j), 800); }
       });
     } catch (e) {
@@ -269,7 +270,8 @@
       const blob = new Uint8Array(await (await fetch(j.file + "?build=" + encodeURIComponent(BUILD.build), { cache: "no-store" })).arrayBuffer());
       const state = new Uint8Array(await crypto.subtle.decrypt({ name: "AES-GCM", iv: blob.slice(0, 12) }, stateKey, blob.slice(12)));
       await window.EJS_emulator.gameManager.loadState(state);
-      setJumpMsg("ok", "Now at " + j.label + " Click the game once so it gets your keys.");
+      setJumpMsg("ok", "Now at " + j.label);
+      focusGame();
     } catch (e) {
       console.warn(e);
       setJumpMsg("error", "Couldn't load that jump (" + (e.name === "OperationError" ? "this ROM can't unlock it" : e.message) + ").");
@@ -280,6 +282,31 @@
     const m = /jump=([\w-]+)/.exec(location.hash);
     return m && (BUILD.jumps || []).find((j) => j.id === m[1]);
   }
+
+  // ---------- keyboard: the page must never scroll while you play ----------
+  // EmulatorJS ignores key auto-repeat *before* it blocks the browser default,
+  // so holding an arrow key (walking) scrolled the page. Block page-moving keys
+  // ourselves while the game is running, and keep focus on the game so a
+  // just-clicked button can't be re-pressed by Enter/Space.
+  const PAGE_KEYS = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " ", "Spacebar",
+                             "PageUp", "PageDown", "Home", "End", "Enter"]);
+  function focusGame() {
+    const el = window.EJS_emulator && window.EJS_emulator.elements && window.EJS_emulator.elements.parent;
+    if (el) el.focus({ preventScroll: true });
+  }
+  window.addEventListener("keydown", (e) => {
+    if (!started || !PAGE_KEYS.has(e.key)) return;
+    const t = e.target, tag = t && t.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (t && t.isContentEditable)) return;
+    const inGame = window.EJS_emulator && window.EJS_emulator.elements &&
+                   window.EJS_emulator.elements.parent.contains(t);
+    if (!inGame && (tag === "BUTTON" || tag === "A")) {
+      // a page button still has focus: hand the key to the game instead
+      e.preventDefault(); focusGame();
+      return;
+    }
+    e.preventDefault();      // no scrolling; the event still reaches the emulator
+  }, { capture: true });
 
   // ---------- page wiring ----------
   function renderTracks() {
