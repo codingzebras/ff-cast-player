@@ -1,8 +1,8 @@
 {
- "build": "0456b74-5f88e21a",
+ "build": "4503a0d-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
-  "patchedSha1": "41cb487462ffc64069d5fdc66e3626edbd747a7b",
+  "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
   "size": 3145728,
   "runs": [
    [
@@ -11,7 +11,7 @@
    ],
    [
     65500,
-    "131eece1"
+    "1221edde"
    ],
    [
     304320,
@@ -19,11 +19,11 @@
    ],
    [
     304394,
-    "8f062000a9018f072000286b68286b64c0a40008c23048dae220a5cbc9cdd022c220a5c9a20000df52a5c4f00be8e8e8e8e02c00d0f1800abf54a5c4e22022c0a4c4c230fa68286b74010100c40102001c02030073020400000005001500060059000700a0000800c9000900"
+    "8f062000a9018f072000286b68286b64c0a40008c23048dae220a5cbc9cdd022c220a5c9a20000df52a5c4f00be8e8e8e8e03000d0f1800abf54a5c4e22022c0a4c4c230fa68286b74010100c40102001c02030073020400000005001500060059000700a0000800c9000900"
    ],
    [
     304503,
-    "000a004e010b00"
+    "000a004e010b00eb020c00"
    ]
   ]
  },
@@ -148,6 +148,17 @@
    "msg": "msg 5",
    "addr": "$CD014E",
    "sha1": "6a078eac1671"
+  },
+  {
+   "n": 12,
+   "file": "audio/track-12.wav",
+   "loop": 0,
+   "seconds": 4.2,
+   "speaker": "Wedge",
+   "line": "\u201cLet's put her on point. No sense taking any risks. Forward!\u201d",
+   "msg": "msg 11",
+   "addr": "$CD02EB",
+   "sha1": "954e1484eb3b"
   }
  ],
  "romName": "ffvi",
