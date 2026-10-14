@@ -250,6 +250,7 @@
   function renderJumps() {
     const ol = $("jumps"), list = BUILD.jumps || [];
     $("jump-sec").hidden = !list.length;
+    $("jump-count").textContent = list.length ? `(${list.length})` : "";
     ol.innerHTML = "";
     for (const j of list) {
       const li = document.createElement("li");
@@ -311,6 +312,7 @@
   // ---------- page wiring ----------
   function renderTracks() {
     const ol = $("tracks");
+    $("tracks-count").textContent = `(${BUILD.tracks.length})`;
     ol.innerHTML = "";
     for (const t of BUILD.tracks) {
       const li = document.createElement("li");

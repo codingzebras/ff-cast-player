@@ -1,5 +1,5 @@
 {
- "build": "3ccd569-831e5989",
+ "build": "439e590-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -235,14 +235,14 @@
   },
   {
    "id": "s0012",
-   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle (press A to talk)",
+   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle",
    "file": "states/s0012.bin",
    "preview": true
   },
   {
-   "id": "s0012a",
-   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle (starts by itself)",
-   "file": "states/s0012a.bin",
+   "id": "s0013",
+   "label": "Scene 13 (not voiced yet): Upon selecting the name \"TERRA\" (during scene 12)",
+   "file": "states/s0013.bin",
    "preview": true
   },
   {
@@ -259,7 +259,7 @@
   },
   {
    "id": "s0016",
-   "label": "Scene 16 (not voiced yet): Upon defeating the commander (press A to talk)",
+   "label": "Scene 16 (not voiced yet): Upon defeating the commander",
    "file": "states/s0016.bin",
    "preview": true
   },

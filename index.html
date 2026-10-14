@@ -1676,6 +1676,14 @@
   p { margin: 0 0 10px; }
   p:last-child { margin-bottom: 0; }
   .muted { color: var(--dim); font-size: 13.5px; }
+  details > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 8px; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before { content: "\25B8"; color: var(--gold); transition: transform .15s; display: inline-block; }
+  details[open] > summary::before { transform: rotate(90deg); }
+  .win summary h2 { margin: 0; }
+  details[open] > summary { margin-bottom: 10px; }
+  .count { font: 600 12px var(--font-mono); color: var(--dim); letter-spacing: 0; }
+  .scroll { max-height: 46vh; overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; }
 
   /* Game stage */
   #stage { padding: 0; overflow: hidden; }
@@ -1768,7 +1776,7 @@
 
     <div class="side">
       <section class="win" aria-labelledby="h-rom">
-        <h2 id="h-rom">1 · Your ROM</h2>
+        <h2 id="h-rom">Your ROM</h2>
         <input class="file" type="file" id="rom-file" accept=".sfc,.smc,application/octet-stream">
         <label class="check"><input type="checkbox" id="remember" checked> Remember it on this device</label>
         <div id="rom-status" data-kind="idle" role="status">Loading…</div>
@@ -1779,16 +1787,20 @@
       </section>
 
       <section class="win" aria-labelledby="h-jump" id="jump-sec" hidden>
-        <h2 id="h-jump">2 · Jump to a scene</h2>
-        <ol id="jumps"></ol>
+        <details id="jump-det">
+          <summary><h2 id="h-jump">Jump to a scene <span class="count" id="jump-count"></span></h2></summary>
+          <p class="muted" style="margin:0 0 8px">Skips straight to just before a scene, with this build's voices. Unlocked by your own clean ROM.</p>
+          <ol id="jumps" class="scroll"></ol>
+        </details>
         <div id="jump-msg" data-kind="idle" role="status" hidden></div>
-        <p class="muted" style="margin-top:10px">Skips straight to just before a dialogue box, with this build's voices. Unlocked by your own clean ROM.</p>
       </section>
 
       <section class="win" aria-labelledby="h-lines">
-        <h2 id="h-lines">3 · Listen for</h2>
-        <ol id="tracks"></ol>
-        <p class="muted" style="margin-top:10px">Choose <b>New Game</b>. One voice clip per dialogue box, starting the moment its box appears.</p>
+        <details>
+          <summary><h2 id="h-lines">Voiced lines <span class="count" id="tracks-count"></span></h2></summary>
+          <p class="muted" style="margin:0 0 8px">Choose <b>New Game</b>. One voice clip per dialogue box, starting the moment its box appears.</p>
+          <ol id="tracks" class="scroll"></ol>
+        </details>
       </section>
 
       <section class="win" aria-labelledby="h-keys">
@@ -1811,4 +1823,4 @@
   </footer>
 </div>
 
-<script src="player.js?v=1792008141"></script>
+<script src="player.js?v=1792013060"></script>
