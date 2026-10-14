@@ -1,5 +1,5 @@
 {
- "build": "8b1bb6a-831e5989",
+ "build": "3ccd569-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -235,8 +235,14 @@
   },
   {
    "id": "s0012",
-   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle",
+   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle (press A to talk)",
    "file": "states/s0012.bin",
+   "preview": true
+  },
+  {
+   "id": "s0012a",
+   "label": "Scene 12 (not voiced yet): Upon talking to the man in the house after the battle (starts by itself)",
+   "file": "states/s0012a.bin",
    "preview": true
   },
   {
@@ -253,7 +259,7 @@
   },
   {
    "id": "s0016",
-   "label": "Scene 16 (not voiced yet): Upon defeating the commander",
+   "label": "Scene 16 (not voiced yet): Upon defeating the commander (press A to talk)",
    "file": "states/s0016.bin",
    "preview": true
   },
