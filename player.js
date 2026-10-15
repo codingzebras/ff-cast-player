@@ -252,13 +252,13 @@
   }
 
   // ---------- jump to a scene (save states) ----------
-  // Music ducking A/B: the patch reads its on/off switch from WRAM $7E0133;
-  // a Pro Action Replay cheat pins it (01 on, 00 off) every frame.
+  // Music ducking A/B: the patch reads its on/off switch from one WRAM byte
+  // (build.json duck.switch); a Pro Action Replay cheat pins it (01 on, 00 off).
   let duckOn = true;
   function applyDuck() {
     const gm = window.EJS_emulator && window.EJS_emulator.gameManager;
     if (!BUILD.duck || !gm) return;
-    try { gm.setCheat(0, 1, "7E01330" + (duckOn ? "1" : "0")); } catch (e) { console.warn(e); }
+    try { gm.setCheat(0, 1, BUILD.duck.switch + (duckOn ? "01" : "00")); } catch (e) { console.warn(e); }
   }
   function renderDuck() {
     $("duck-sec").hidden = !BUILD.duck;
