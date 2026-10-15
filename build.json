@@ -1,5 +1,5 @@
 {
- "build": "97ec2d3-831e5989",
+ "build": "d80313e-831e5989",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "2479ff195f81e1b98a6084e5907e8a421ba1763d",
@@ -287,5 +287,16 @@
    "preview": true,
    "scene": 17
   }
- ]
+ ],
+ "game": {
+  "repo": "ff-cast-player",
+  "title": "FF6 Voice Cast Player",
+  "heading": "FF6 <span>Voice Cast</span> Player",
+  "romFile": "Final Fantasy III (USA).sfc",
+  "romDesc": "the clean US 1.0 \u201cFinal Fantasy III (USA)\u201d",
+  "romName": "ffvi",
+  "keySalt": "ffvi-voice-states",
+  "storage": "ffvi-voice-player",
+  "short": "FF6"
+ }
 }

@@ -1,4 +1,5 @@
-// FF6 Voice Cast Player: runs the voice patch in the browser with MSU-1 audio.
+// Voice Cast Player (one site per game; names from build.json "game", i.e.
+// the game card's playerSite): runs the voice patch in the browser with MSU-1 audio.
 //
 // Flow: the viewer picks their own clean ROM -> we verify it (SHA-1), apply the
 // patch diff from build.json, then start EmulatorJS (snes9x core) and write
@@ -15,6 +16,7 @@
   const EJS_SRC = ["emulator.js", "nipplejs.js", "shaders.js", "storage.js", "gamepad.js",
                    "GameManager.js", "compression.js"];
   let BUILD = null;          // build.json
+  const G = () => (BUILD && BUILD.game) || {};   // this game: ROM file name, key salt, …
   let romBytes = null;       // patched ROM ready to run
   let started = false;
   let stateKey = null;       // AES key for the jump states, derived from the clean ROM
@@ -37,10 +39,10 @@
   }
 
   // ---------- IndexedDB: optional "remember my ROM" ----------
-  const DB = "ffvi-voice-player", STORE = "rom";
+  const STORE = "rom";
   function idb() {
     return new Promise((res, rej) => {
-      const r = indexedDB.open(DB, 1);
+      const r = indexedDB.open(G().storage || "voice-player", 1);
       r.onupgradeneeded = () => r.result.createObjectStore(STORE);
       r.onsuccess = () => res(r.result);
       r.onerror = () => rej(r.error);
@@ -66,13 +68,13 @@
     const p = BUILD.patch;
     if (bytes.length === p.size + 512) bytes = bytes.slice(512);           // copier header
     if (bytes.length !== p.size) {
-      throw new Error(`That file is ${bytes.length.toLocaleString()} bytes; the US ROM is ` +
-        `${p.size.toLocaleString()} bytes. Pick "Final Fantasy III (USA).sfc".`);
+      throw new Error(`That file is ${bytes.length.toLocaleString()} bytes; the game's ROM is ` +
+        `${p.size.toLocaleString()} bytes. Pick "${G().romFile}".`);
     }
     const h = await sha1(bytes);
     if (h === p.patchedSha1) return { rom: bytes, how: "already-patched" };
     if (h !== p.cleanSha1) {
-      throw new Error("This ROM doesn't match the clean US 1.0 “Final Fantasy III (USA)” " +
+      throw new Error(`This ROM doesn't match ${G().romDesc} ` +
         "the patch is built for (SHA-1 " + h.slice(0, 12) + "…). Use the copy from the repo's main branch.");
     }
     const out = new Uint8Array(bytes);
@@ -84,9 +86,9 @@
   }
 
   // Jump states hold the game's memory, so the build encrypts them with a key
-  // only a clean ROM gives: SHA-256("ffvi-voice-states\0" + ROM).
+  // only a clean ROM gives: SHA-256(keySalt + "\0" + ROM), keySalt from the game card.
   async function deriveStateKey(clean) {
-    const tag = new TextEncoder().encode("ffvi-voice-states\0");
+    const tag = new TextEncoder().encode(G().keySalt + "\0");
     const buf = new Uint8Array(tag.length + clean.length);
     buf.set(tag); buf.set(clean, tag.length);
     const raw = await crypto.subtle.digest("SHA-256", buf);
@@ -102,7 +104,7 @@
       loadLines();
       if (r.clean && $("remember").checked && !fromMemory) remember(r.clean);
       setStatus("ok", fromMemory ? "Using the ROM saved on this device. Patched and ready."
-        : r.how === "patched" ? "Clean ROM verified: byte for byte the known-good US 1.0 dump. Patched and ready to play."
+        : r.how === "patched" ? "Clean ROM verified: byte for byte the known-good dump. Patched and ready to play."
         : "Patched ROM from this build recognized. Ready to play.");
       $("play").disabled = false;
       $("forget").hidden = !fromMemory;
@@ -223,7 +225,7 @@
       $("stage").classList.add("running");
       window.EJS_emulator = new window.EmulatorJS("#game", {
         gameUrl: BUILD.romName + ".sfc",
-        gameName: "FF6 Voice Cast",
+        gameName: (G().short || "") + " Voice Cast",
         dataPath: "ejs/",
         system: "snes",
         startOnLoad: true,
