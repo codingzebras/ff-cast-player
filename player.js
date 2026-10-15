@@ -342,7 +342,8 @@
       li.innerHTML = `<span class="tn"></span><span class="who"></span><span class="line"></span>`;
       li.querySelector(".tn").textContent = l.track || "–";
       li.querySelector(".who").textContent = l.who;
-      li.querySelector(".line").textContent = l.text.replace(/^[A-Z][A-Z .']*:\s*/, "");
+      li.querySelector(".line").textContent = (l.part ? "⚔ " : "") + l.text.replace(/^[A-Z][A-Za-z .']*:\s*/, "");
+      if (l.part) li.title = l.part;
       ol.appendChild(li);
     }
   }
