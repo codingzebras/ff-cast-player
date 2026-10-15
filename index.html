@@ -1734,6 +1734,9 @@
     border: 3px solid var(--frame); background: var(--gold); color: #1a1440;
   }
   button.go:disabled { background: transparent; color: var(--dim); border-color: var(--dim); cursor: not-allowed; }
+  /* on/off pair: the chosen one is filled, the other an outline */
+  button.go[aria-pressed="false"] { background: transparent; color: var(--gold); }
+  #duck-sec .actions { margin-top: 0; }
   button.link { background: none; border: 0; color: var(--dim); text-decoration: underline; cursor: pointer; font: 13px var(--font-body); padding: 0; }
   button:focus-visible, .file:focus-within { outline: 3px solid var(--gold); outline-offset: 2px; }
 
@@ -1790,6 +1793,15 @@
         </div>
       </section>
 
+      <section class="win" aria-labelledby="h-duck" id="duck-sec" hidden>
+        <h2 id="h-duck">Music ducking</h2>
+        <p class="muted" style="margin:0 0 8px" id="duck-sub">The music dips while characters speak. Switch it off and on to compare, live.</p>
+        <div class="actions" role="group" aria-label="Music ducking">
+          <button class="go" id="duck-on" aria-pressed="true">On</button>
+          <button class="go" id="duck-off" aria-pressed="false">Off</button>
+        </div>
+      </section>
+
       <section class="win" aria-labelledby="h-jump" id="jump-sec" hidden>
         <details id="jump-det">
           <summary><h2 id="h-jump">Jump to a scene <span class="count" id="jump-count"></span></h2></summary>
@@ -1827,4 +1839,4 @@
   </footer>
 </div>
 
-<script src="player.js?v=1792078869"></script>
+<script src="player.js?v=1792085008"></script>

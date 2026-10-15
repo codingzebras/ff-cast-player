@@ -238,6 +238,7 @@
       });
       window.EJS_emulator.on("start", () => {
         setStatus("ok", "Running. Choose New Game, or jump to a scene.");
+        applyDuck();
         focusGame();
         if (pendingJump) { const j = pendingJump; pendingJump = null; setTimeout(() => jumpTo(j), 800); }
       });
@@ -251,6 +252,21 @@
   }
 
   // ---------- jump to a scene (save states) ----------
+  // Music ducking A/B: the patch reads its on/off switch from WRAM $7E0133;
+  // a Pro Action Replay cheat pins it (01 on, 00 off) every frame.
+  let duckOn = true;
+  function applyDuck() {
+    const gm = window.EJS_emulator && window.EJS_emulator.gameManager;
+    if (!BUILD.duck || !gm) return;
+    try { gm.setCheat(0, 1, "7E01330" + (duckOn ? "1" : "0")); } catch (e) { console.warn(e); }
+  }
+  function renderDuck() {
+    $("duck-sec").hidden = !BUILD.duck;
+    if (!BUILD.duck) return;
+    $("duck-sub").textContent = `The music dips to ${BUILD.duck.levelPct}% while characters speak and comes back after the conversation. Switch it off and on to compare, live.`;
+    $("duck-on").setAttribute("aria-pressed", String(duckOn)); $("duck-off").setAttribute("aria-pressed", String(!duckOn));
+  }
+  function setDuck(on) { duckOn = on; renderDuck(); applyDuck(); focusGame(); }
   function setJumpMsg(kind, text) { const el = $("jump-msg"); el.hidden = !text; el.dataset.kind = kind; el.textContent = text; }
   function renderJumps() {
     const ol = $("jumps"), list = BUILD.jumps || [];
@@ -375,6 +391,9 @@
     }
     renderTracks();
     renderJumps();
+    renderDuck();
+    $("duck-on").addEventListener("click", () => setDuck(true));
+    $("duck-off").addEventListener("click", () => setDuck(false));
     $("rom-file").addEventListener("change", async (ev) => {
       const f = ev.target.files && ev.target.files[0];
       if (!f) return;
