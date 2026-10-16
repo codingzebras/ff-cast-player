@@ -1,5 +1,5 @@
 {
- "build": "6377204-77423fdf",
+ "build": "e5acbac-3314c0d6",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "922f616c520fe0e6058a9e0e482c06ce89f88a9f",
@@ -65,7 +65,7 @@
    "line": "\u201cLong ago, the War of the Magi reduced the world to a scorched waste\u2026\u201d",
    "msg": "msg 6",
    "addr": "$CD0174",
-   "sha1": "006aa32026da"
+   "sha1": "18dc40664868"
   },
   {
    "n": 2,
@@ -76,7 +76,7 @@
    "line": "\u201c1000 years have passed\u2026 Iron, gunpowder, and steam engines have bee\u2026\u201d",
    "msg": "msg 7",
    "addr": "$CD01C4",
-   "sha1": "20cd5ce176fe"
+   "sha1": "a7584d0966e6"
   },
   {
    "n": 3,
@@ -87,7 +87,7 @@
    "line": "\u201cBut there are some who would enslave the world by reviving the drea\u2026\u201d",
    "msg": "msg 8",
    "addr": "$CD021C",
-   "sha1": "e4111028ee20"
+   "sha1": "21600a8c23dd"
   },
   {
    "n": 4,
@@ -98,95 +98,95 @@
    "line": "\u201cCan it be that those in power are on the verge of repeating a sense\u2026\u201d",
    "msg": "msg 9",
    "addr": "$CD0273",
-   "sha1": "6e190dd54583"
+   "sha1": "50e4174ad788"
   },
   {
    "n": 5,
    "file": "audio/track-5.wav",
    "loop": 0,
-   "seconds": 1.2,
+   "seconds": 1.6,
    "speaker": "Vicks",
    "line": "\u201cThere's the town\u2026\u201d",
    "msg": "msg 1",
    "addr": "$CD0000",
-   "sha1": "20021b593384"
+   "sha1": "1b6b45ccb661"
   },
   {
    "n": 6,
    "file": "audio/track-6.wav",
    "loop": 0,
-   "seconds": 7.4,
+   "seconds": 7.3,
    "speaker": "Wedge",
    "line": "\u201cHard to believe an Esper's been found intact there, 1000 years afte\u2026\u201d",
    "msg": "msg 1",
    "addr": "$CD0015",
-   "sha1": "d9a13e51790a"
+   "sha1": "91b537be2a48"
   },
   {
    "n": 7,
    "file": "audio/track-7.wav",
    "loop": 0,
-   "seconds": 5.3,
+   "seconds": 6.2,
    "speaker": "Vicks + Wedge",
    "line": "\u201cThink it's still alive? / Probably\u2026 \u2026judging from the urgency of ou\u2026\u201d",
    "msg": "msg 2",
    "addr": "$CD0059",
-   "sha1": "0ce7c53edc45"
+   "sha1": "3fedb1db143f"
   },
   {
    "n": 8,
    "file": "audio/track-8.wav",
    "loop": 0,
-   "seconds": 4.6,
+   "seconds": 5.0,
    "speaker": "Vicks",
    "line": "\u201cAnd this woman, this\u2026sorcerer. Why's she here?\u201d",
    "msg": "msg 3",
    "addr": "$CD00A0",
-   "sha1": "d6dd36ed4f7f"
+   "sha1": "3fa0bfb07131"
   },
   {
    "n": 9,
    "file": "audio/track-9.wav",
    "loop": 0,
-   "seconds": 3.9,
+   "seconds": 4.8,
    "speaker": "Vicks",
    "line": "\u201cI heard she fried 50 of our Magitek Armored soldiers in under 3 min\u2026\u201d",
    "msg": "msg 3",
    "addr": "$CD00C9",
-   "sha1": "0b3a8c59655b"
+   "sha1": "691e17a9ab9f"
   },
   {
    "n": 10,
    "file": "audio/track-10.wav",
    "loop": 0,
-   "seconds": 7.0,
+   "seconds": 6.9,
    "speaker": "Wedge",
    "line": "\u201cNot to worry. The Slave Crown on her head robs her of all conscious\u2026\u201d",
    "msg": "msg 4",
    "addr": "$CD00FF",
-   "sha1": "0fe76640a941"
+   "sha1": "6afe1a9fad43"
   },
   {
    "n": 11,
    "file": "audio/track-11.wav",
    "loop": 0,
-   "seconds": 2.6,
+   "seconds": 2.8,
    "speaker": "Wedge",
    "line": "\u201cWe'll approach from the east. Move out!\u201d",
    "msg": "msg 5",
    "addr": "$CD014E",
-   "sha1": "6a078eac1671"
+   "sha1": "a8d9eff74d91"
   },
   {
    "n": 12,
    "file": "audio/track-12.wav",
    "loop": 0,
-   "seconds": 4.2,
+   "seconds": 4.6,
    "speaker": "Wedge",
    "line": "\u201cLet's put her on point. No sense taking any risks. Forward!\u201d",
    "msg": "msg 11",
    "addr": "$CD02EB",
-   "sha1": "954e1484eb3b"
+   "sha1": "9453eba72a72"
   }
  ],
  "romName": "ffvi",
