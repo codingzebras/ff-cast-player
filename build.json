@@ -1,5 +1,5 @@
 {
- "build": "1cc87b1-b1d95c16",
+ "build": "ffc879b-b1d95c16",
  "patch": {
   "cleanSha1": "4f37e4274ac3b2ea1bedb08aa149d8fc5bb676e7",
   "patchedSha1": "922f616c520fe0e6058a9e0e482c06ce89f88a9f",
@@ -65,7 +65,7 @@
    "line": "\u201cLong ago, the War of the Magi reduced the world to a scorched waste\u2026\u201d",
    "msg": "msg 6",
    "addr": "$CD0174",
-   "sha1": "f5e2ef80075a"
+   "sha1": "085292197036"
   },
   {
    "n": 2,
@@ -76,7 +76,7 @@
    "line": "\u201c1000 years have passed\u2026 Iron, gunpowder, and steam engines have bee\u2026\u201d",
    "msg": "msg 7",
    "addr": "$CD01C4",
-   "sha1": "b8bb999be0e5"
+   "sha1": "2487c0466d2b"
   },
   {
    "n": 3,
@@ -87,7 +87,7 @@
    "line": "\u201cBut there are some who would enslave the world by reviving the drea\u2026\u201d",
    "msg": "msg 8",
    "addr": "$CD021C",
-   "sha1": "b44d6c9cd965"
+   "sha1": "39bd0cfb5b8e"
   },
   {
    "n": 4,
@@ -98,7 +98,7 @@
    "line": "\u201cCan it be that those in power are on the verge of repeating a sense\u2026\u201d",
    "msg": "msg 9",
    "addr": "$CD0273",
-   "sha1": "8726b57dda91"
+   "sha1": "c322fb87d13d"
   },
   {
    "n": 5,
@@ -109,7 +109,7 @@
    "line": "\u201cThere's the town\u2026\u201d",
    "msg": "msg 1",
    "addr": "$CD0000",
-   "sha1": "7761af847ef0"
+   "sha1": "58c79b386da1"
   },
   {
    "n": 6,
@@ -120,7 +120,7 @@
    "line": "\u201cHard to believe an Esper's been found intact there, 1000 years afte\u2026\u201d",
    "msg": "msg 1",
    "addr": "$CD0015",
-   "sha1": "2c4ace2c7e06"
+   "sha1": "1395daf041d3"
   },
   {
    "n": 7,
@@ -131,7 +131,7 @@
    "line": "\u201cThink it's still alive? / Probably\u2026 \u2026judging from the urgency of ou\u2026\u201d",
    "msg": "msg 2",
    "addr": "$CD0059",
-   "sha1": "7bc6bfc39017"
+   "sha1": "15d3fdc05308"
   },
   {
    "n": 8,
@@ -142,7 +142,7 @@
    "line": "\u201cAnd this woman, this\u2026sorcerer. Why's she here?\u201d",
    "msg": "msg 3",
    "addr": "$CD00A0",
-   "sha1": "452cb764c85a"
+   "sha1": "c7c4abea20b0"
   },
   {
    "n": 9,
@@ -153,7 +153,7 @@
    "line": "\u201cI heard she fried 50 of our Magitek Armored soldiers in under 3 min\u2026\u201d",
    "msg": "msg 3",
    "addr": "$CD00C9",
-   "sha1": "18cab119343f"
+   "sha1": "e63be980608d"
   },
   {
    "n": 10,
@@ -164,7 +164,7 @@
    "line": "\u201cNot to worry. The Slave Crown on her head robs her of all conscious\u2026\u201d",
    "msg": "msg 4",
    "addr": "$CD00FF",
-   "sha1": "2639f6a271ba"
+   "sha1": "b21c1e89cf78"
   },
   {
    "n": 11,
@@ -175,7 +175,7 @@
    "line": "\u201cWe'll approach from the east. Move out!\u201d",
    "msg": "msg 5",
    "addr": "$CD014E",
-   "sha1": "107ae3a55570"
+   "sha1": "d47acb8054f7"
   },
   {
    "n": 12,
@@ -186,7 +186,7 @@
    "line": "\u201cLet's put her on point. No sense taking any risks. Forward!\u201d",
    "msg": "msg 11",
    "addr": "$CD02EB",
-   "sha1": "98bfc3f690fa"
+   "sha1": "9239f2263ade"
   }
  ],
  "romName": "ffvi",
